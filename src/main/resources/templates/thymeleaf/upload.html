@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>이미지 업로드</title>
+</head>
+<body>
+	<h1>file upload</h1>
+	<div class="container">
+		<form action="/user/fileUpload" method="post" enctype="multipart/form-data">
+			<!-- csrf 안붙여주면 POST방식 불가능하다는 에러 발생 -->
+			<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+			
+			<input type="file" name="files"> 
+			<!-- 여기서 files는 controller에 @RequestPart MultipartFile files -->
+
+			<button type="submit" class="btn btn-dark">등록하기</button>
+			
+			<hr>
+			<a th:href="@{'/'}">메인으로 이동</a>
+		</form>
+	</div>
+</body>
+</html>
